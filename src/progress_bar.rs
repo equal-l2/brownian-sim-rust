@@ -1,4 +1,4 @@
-use std::io::{stdout,Write};
+use std::io::{stderr,Write};
 
 pub struct ProgressBar{
     max :u64,
@@ -67,7 +67,7 @@ impl ProgressBar{
         // actual flushing of buffer will happen only when either progress in percentage or tics changes
         // `next_show_count` is capped with `max` to ensure last value is 100%
 
-        print!("{}",s);
-        stdout().flush();
+        write!(stderr(),"{}",s);
+        stderr().flush();
     }
 }
