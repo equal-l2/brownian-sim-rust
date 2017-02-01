@@ -10,6 +10,12 @@ pub struct ProgressBar{
 
 impl ProgressBar{
     pub fn new(max_in:u64, width_in:u64) -> ProgressBar {
+        // max       : max count (count value on 100% progress)
+        // width     : width of progress bar in character
+        // precision : digits after decimal point
+
+        // Caution
+        // Too much precision can cause great performance decrease
         ProgressBar{max:max_in, width:width_in, precision:0, count:0, next_show_count:0}
     }
 
@@ -26,7 +32,7 @@ impl ProgressBar{
         self.precision=precision_arg;
     }
 
-    pub fn show(&mut self){
+    fn show(&mut self){
         let mut s = "".to_string();
         let count = self.count as f64;
         let max   = self.max   as f64;
