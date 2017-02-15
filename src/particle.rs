@@ -11,7 +11,7 @@ pub struct Particle{
 impl Particle{
     fn v2(&self) -> f64 {
         let dist = Normal::new(0.,(K*T/M)*(1.-(-2.*BETA*DT).exp()));
-        return dist.ind_sample(&mut rand::thread_rng());
+        dist.ind_sample(&mut rand::thread_rng())
     }
 
     pub fn adv(&mut self){
